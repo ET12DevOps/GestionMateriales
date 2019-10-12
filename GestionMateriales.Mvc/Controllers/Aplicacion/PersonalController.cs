@@ -3,7 +3,7 @@ using System.Linq;
 using GestionMateriales.Repository.Models;
 using GestionMateriales.Services.Contracts;
 
-namespace GestionMateriales.Mvc.Controllers
+namespace GestionMateriales.Mvc.Controllers.Aplicacion
 {
     //[Authorize(Roles = "administrador, oficinatecnica")]
     //[Route("/Personal")]
