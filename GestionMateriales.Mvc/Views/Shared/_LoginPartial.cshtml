@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+<li class="nav-item">
+    <a class="nav-link" href="~/Ayuda" data-toggle="tooltip" data-placement="bottom" data-original-title="Ayuda"><i class="far fa-question" ></i></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="~/About" data-toggle="tooltip" data-placement="bottom" data-original-title="Nosotros"><i class="far fa-users" ></i></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="~/Manage" data-toggle="tooltip" data-placement="bottom" data-original-title="Configuración"><i class="far fa-user"></i> @User.Identity.Name</a>
+</li>
+<li class="nav-item">
+    @*<a href="javascript:document.getElementById('logoutForm').submit()" data-toggle="tooltip" data-placement="bottom" data-original-title="Cerrar Sesión"><i class="far fa-sign-out-alt"></i></a>*@
+    @*@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+        }*@
+    <form asp-area="Identity" asp-page="/Identity/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <button type="submit" class="nav-link btn btn-link text-dark"><i class="far fa-sign-out-alt"></i></button>
+    </form>
+</li>
+
+
+
+

@@ -29,8 +29,7 @@ namespace GestionMateriales.Mvc
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<OficinaTecnicaContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("sgm_oficinatecnica")));
+            services.AddDbContext<OficinaTecnicaContext>(options => options.UseMySQL(Configuration.GetConnectionString("sgm_oficinatecnica")));
 
             services.AddScoped<DbContext, OficinaTecnicaContext>();
 

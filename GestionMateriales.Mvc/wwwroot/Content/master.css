@@ -1,0 +1,109 @@
+﻿body h1 {
+    font-family: 'quicksand_lightregular' !important;
+    font-size: 40px;
+}
+
+body h2 {
+    font-family: 'quicksand_lightregular';
+    font-size: 32px;
+}
+
+body h3 {
+    font-family: 'quicksand_lightregular';
+    font-size: 26px;
+}
+
+body h4 {
+    font-family: 'quicksand_lightregular';
+    font-size: 22px;
+}
+
+body p {
+    font-family: 'quicksand_lightregular';
+    font-size: 14px;
+}
+
+body ul > li {
+    font-family: 'quicksand_lightregular';
+    font-size: 14px;
+}
+
+body label {
+    font-family: 'quicksand_lightregular';
+    font-size: 14px;
+}
+
+body td, th {
+    font-family: 'quicksand_lightregular';
+    font-size: 12px;
+}
+
+body a {
+    font-family: 'quicksand_lightregular';
+    font-size: 12px;
+}
+
+.sidebar-menu > li > a{
+    font-family: 'quicksandbold';
+    font-size: 12px;
+}
+
+.imggif {
+    width: 100%;
+    border-width: 1px;
+    border-color: #E0E0E0;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.fondo {
+    background-color: #F5F5F5;
+}
+
+#lastUpdated {
+    font-family: 'quicksand_lightregular';
+    font-size: 14px;
+}
+
+.list-group-item.active {
+    background-color: #E1BEE7 !important;
+    border-color: #E1BEE7 !important;
+}
+
+.dataTables_info {
+    font-family: 'quicksand_lightregular';
+    font-size: 14px;
+}
+
+/*Login*/
+
+.logoet {
+    opacity: 0.6;
+}
+
+.mensajeLogin {
+    margin-top: 50px;
+}
+
+.btnLogin {
+    font-family: 'quicksand_lightregular';
+    font-size: 14px;
+    border-radius: 15px !important;
+}
+
+.textLoginPlaceholder {
+    font-family: 'quicksand_lightregular';
+    font-size: 14px;
+}
+
+/*Register*/
+
+#Username, #Password, #Email, #ConfirmPassword {
+    border-radius: 15px !important;
+}
+
+/*Sidebar*/
+#nombreAplicacion {
+    font-family: 'quicksandbold' !important;
+    font-size: 20px !important;
+}

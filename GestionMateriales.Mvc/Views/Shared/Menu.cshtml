@@ -1,0 +1,26 @@
+﻿@model IEnumerable<GestionMateriales.Mvc.Models.MenuItem>
+
+@foreach (var item in Model)
+{
+    if (item.isParent == false && item.parentId == 0)
+    {
+        <li class="nav-item">
+            <a class="sidebar-link" href="@Url.Action(item.action, item.controller)"><span class="icon-holder"><i class="@item.imageClass"></i> </span> <span>@item.nameOption</span></a>
+        </li>
+    }
+    else
+    {
+        if (item.isParent == true && item.parentId == 0)
+        {
+        <li class="nav-item dropdown">
+            <a href="javascript:void(0);" class="dropdown-toggle"><span class="icon-holder"><i class="@item.imageClass"></i></span> <span class="title">@item.nameOption</span> <span class="arrow"><i class="fas fa-angle-right float-down"></i></span></a>
+            <ul class="dropdown-menu">
+                @foreach (var child in Model.Where(p => p.parentId == item.Id))
+                {
+                <li><a class="sidebar-link" href="@Url.Action(child.action, child.controller)">@child.nameOption </a></li>
+                }
+            </ul>
+        </li>
+        }
+    }
+}
