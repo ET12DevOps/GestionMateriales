@@ -2,10 +2,11 @@
 using System.Linq;
 using GestionMateriales.Repository.Models;
 using GestionMateriales.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestionMateriales.Mvc.Controllers.Aplicacion
 {
-    //[Authorize(Roles = "administrador, oficinatecnica")]
+    [Authorize(Roles = "Administrador, Oficina Técnica")]
     //[Route("/Personal")]
     public class PersonalController : Controller
     {

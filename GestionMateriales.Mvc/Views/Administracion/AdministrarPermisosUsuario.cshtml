@@ -19,7 +19,7 @@
             <div asp-validation-summary="All" class="text-danger"></div>
         </div>
         <div class="card-footer">
-            <input type="submit" value="Actualizar" class="btn btn-outline-primary" style="width:auto" />
+            <button type="submit" class="btn btn-outline-primary" style="width:auto"><i class="far fa-check"></i> Actualizar </button>
             <a asp-action="EditarUsuario" asp-route-id="@Model.UserId" class="btn btn-outline-primary" style="width:auto"><i class="far fa-times"></i> Cancelar</a>
         </div>
     </div>

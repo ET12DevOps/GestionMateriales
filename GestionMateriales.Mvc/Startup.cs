@@ -48,6 +48,8 @@ namespace GestionMateriales.Mvc
                 options.Password.RequireUppercase = false;
             });
 
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Administracion/LogIn");
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

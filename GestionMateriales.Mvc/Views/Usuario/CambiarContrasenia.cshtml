@@ -1,0 +1,29 @@
+﻿@model GestionMateriales.Mvc.ViewModels.Administracion.CambiarContraseniaViewModel
+
+<div class="card">
+    <div class="card-body">
+        <h1>Cambiar contraseña</h1>
+        <p class="mb-0">La contraseña debe tener un mínimo de 8 caracteres</p>
+        <hr />
+        <form asp-controller="Usuario" asp-action="CambiarContrasenia" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OldPassword">Contraseña Actual</label>
+                <input asp-for="OldPassword" class="form-control" />
+                <span asp-validation-for="OldPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewPassword">Contraseña Nueva</label>
+                <input asp-for="NewPassword" class="form-control" />
+                <span asp-validation-for="NewPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword">Confirmar nueva contraseña</label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-outline-primary"><i class="far fa-check"></i> Cambiar Contraseña</button>
+            <a asp-action="Index" class="btn btn-outline-primary"><i class="far fa-times"></i> Cancelar</a>
+        </form>
+    </div>
+</div>

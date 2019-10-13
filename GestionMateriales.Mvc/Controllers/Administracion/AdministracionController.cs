@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using GestionMateriales.Mvc.Identity;
 using GestionMateriales.Mvc.ViewModels.Administracion;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +27,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public IActionResult CrearUsuario()
         {
             return View();
@@ -42,7 +44,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
 
                 if (result.Succeeded)
                 {
-                    await signInManager.SignInAsync(user, isPersistent: false); //Persistent es por la cookie de sesión
+                    //await signInManager.SignInAsync(user, isPersistent: false); //Persistent es por la cookie de sesión
                     return RedirectToAction("Usuarios", "Administracion");
                 }
 
@@ -68,14 +70,14 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(
-                    model.Email, model.Contrasenia, model.Recordarme, false);
+                    model.Email, model.Contrasenia, model.Recordarme, true);
 
                 if (result.Succeeded)
                 {
                     return RedirectToAction("index", "home");
                 }
 
-                ModelState.AddModelError(string.Empty, "Intento de Logeo Incorrecto");
+                ModelState.AddModelError(string.Empty, "Error ingreso, verifique usuario y/o contraseña");
             }
 
             return View(model);

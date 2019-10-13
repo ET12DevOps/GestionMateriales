@@ -29,7 +29,8 @@
                 <input asp-for="ConfirmarContrasenia" class="form-control" />
                 <span asp-validation-for="ConfirmarContrasenia" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-outline-primary btnLogin">Guardar</button>
+            <button type="submit" class="btn btn-outline-primary btnLogin"><i class="far fa-check"></i> Guardar</button>
+            <a asp-action="Roles" class="btn btn-outline-primary"><i class="far fa-times"></i> Cancelar</a>
         </form>
     </div>
 </div>

@@ -107,3 +107,7 @@ body a {
     font-family: 'quicksandbold' !important;
     font-size: 20px !important;
 }
+
+.btnLogout {
+    margin-top: 10px;
+}

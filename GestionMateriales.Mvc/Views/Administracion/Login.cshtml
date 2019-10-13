@@ -4,31 +4,31 @@
     ViewBag.Title = "Login";
 }
 
-<h1>Login</h1>
-
-<div class="row">
-    <div class="col-md-12">
-        <form method="post" asp-controller="Cuenta" asp-action="Login">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Contrasenia">Contraseña</label>
-                <input asp-for="Contrasenia" class="form-control" />
-                <span asp-validation-for="Contrasenia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label asp-for="Recordarme">
-                        <input asp-for="Recordarme" />
-                        @Html.DisplayNameFor(m => m.Recordarme)
-                    </label>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+<form method="post" asp-controller="Administracion" asp-action="Login" class="form-signin">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="~/Assets/logo128x128.png" alt="" width="128" height="128">
+        <h1 class="display-4">Login</h1>
     </div>
-</div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-label-group">
+        <input id="inputEmail" asp-for="Email" class="form-control" placeholder="Email address" required autofocus />
+        <label for="inputEmail" asp-for="Email" style="pointer-events:none;"></label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-label-group">
+        <input id="inputPassword" asp-for="Contrasenia" class="form-control" placeholder="Email address" required autofocus />
+        <label for="inputPassword" asp-for="Contrasenia" style="pointer-events:none;">Contraseña</label>
+        <span asp-validation-for="Contrasenia" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <div class="checkbox">
+            <label asp-for="Recordarme">
+                <input asp-for="Recordarme" />
+                @Html.DisplayNameFor(m => m.Recordarme)
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2016-2019</p>
+</form>
+

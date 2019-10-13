@@ -1,16 +1,13 @@
-﻿@*@using Microsoft.AspNetCore.Identity
-    @inject SignInManager<IdentityUser> SignInManager
-    @inject UserManager<IdentityUser> UserManager
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<GestionMateriales.Mvc.Identity.ApplicationUser> SignInManager
+@inject UserManager<GestionMateriales.Mvc.Identity.ApplicationUser> UserManager
 
-    @if (SignInManager.IsSignedIn(User))
-    {
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-    else
-    {
-        Layout = "~/Views/Shared/_LoginLayout.cshtml";
-    }*@
-
-@{
-    Layout = "_Layout";
+@if (SignInManager.IsSignedIn(User))
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+else
+{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+

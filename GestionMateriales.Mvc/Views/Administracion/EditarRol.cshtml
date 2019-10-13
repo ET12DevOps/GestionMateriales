@@ -34,8 +34,8 @@
 
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-outline-primary">Actualizar</button>
-                    <a asp-action="Roles" class="btn btn-outline-primary">Cancelar</a>
+                    <button type="submit" class="btn btn-outline-primary"><i class="far fa-check"></i> Actualizar</button>
+                    <a asp-action="Roles" class="btn btn-outline-primary"><i class="far fa-times"></i> Cancelar</a>
                 </div>
             </div>
 
@@ -53,11 +53,11 @@
                     }
                     else
                     {
-                        <h5 class="card-title">None at the moment</h5>
+                        <h5 class="card-title">Ninguno</h5>
                     }
                 </div>
                 <div class="card-footer">
-                    <a asp-controller="Administracion" asp-action="EditarUsuarioEnRol" asp-route-roleId="@Model.Id" class="btn btn-outline-primary">Administrar usuarios</a>
+                    <a asp-controller="Administracion" asp-action="EditarUsuarioEnRol" asp-route-roleId="@Model.Id" class="btn btn-outline-primary"><i class="far fa-tasks"></i> Administrar usuarios</a>
                 </div>
             </div>
         </form>
