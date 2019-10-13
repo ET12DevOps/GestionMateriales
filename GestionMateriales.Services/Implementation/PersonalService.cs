@@ -1,6 +1,7 @@
 ﻿using GestionMateriales.Repository.Contracts;
 using GestionMateriales.Repository.Models;
 using GestionMateriales.Services.Contracts;
+using GestionMateriales.Services.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace GestionMateriales.Services.Implementation
             var personal = personalRepository.FindById(id);
 
             if (personal == null)
-                throw new Exception("No existe el personal asociado con Id");
+                throw new PersonalException("No existe el personal asociado con Id");
 
             return personal;
         }

@@ -48,7 +48,7 @@ namespace GestionMateriales.Mvc
                 options.Password.RequireUppercase = false;
             });
 
-            services.ConfigureApplicationCookie(options => options.LoginPath = "/Administracion/LogIn");
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Administracion/Login");
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -62,7 +62,8 @@ namespace GestionMateriales.Mvc
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
 
             app.UseStaticFiles();

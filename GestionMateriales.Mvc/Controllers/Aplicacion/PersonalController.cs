@@ -3,6 +3,8 @@ using System.Linq;
 using GestionMateriales.Repository.Models;
 using GestionMateriales.Services.Contracts;
 using Microsoft.AspNetCore.Authorization;
+using GestionMateriales.Services.Exceptions;
+using System;
 
 namespace GestionMateriales.Mvc.Controllers.Aplicacion
 {
@@ -39,11 +41,15 @@ namespace GestionMateriales.Mvc.Controllers.Aplicacion
             {
                 personal = personalService.BuscarPersonalCon(id);
             }
-            catch
+            catch (PersonalException e)
             {
-                return View("Editar");
+                return RedirectToAction("NotFound", "Error");
             }
-            
+            catch (Exception e)
+            {
+                return RedirectToAction("Error", "Error");
+            }
+
             return View("Editar", personal);
         }
 
@@ -56,12 +62,12 @@ namespace GestionMateriales.Mvc.Controllers.Aplicacion
             }
             catch
             {
-                ViewBag.Result = 1;
+                ViewBag.Result = 1; //muestro mensaje error
 
                 return View("Agregar", personal);
             }
 
-            ViewBag.Result = 0;
+            ViewBag.Result = 0; //muestro mensaje de realizacion
 
             return View("Agregar");
         }
@@ -76,12 +82,12 @@ namespace GestionMateriales.Mvc.Controllers.Aplicacion
             }
             catch
             {
-                ViewBag.Result = 1;
+                ViewBag.Result = 1; //muestro mensaje de error
 
                 return View("Editar", personalActulizado);
             }
 
-            ViewBag.Result = 0;
+            ViewBag.Result = 0; //muestro mensaje de realizacion
 
             return View("Editar", personalActulizado);
         }
@@ -94,7 +100,7 @@ namespace GestionMateriales.Mvc.Controllers.Aplicacion
             }
             catch
             {
-                return RedirectToAction("Error500", "Error");
+                return RedirectToAction("Error", "Error");
             }
 
             return RedirectToAction("Index", "Personal");

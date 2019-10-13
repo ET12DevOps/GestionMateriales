@@ -1,16 +1,11 @@
 ﻿@model GestionMateriales.Repository.Models.Personal
 
-<div class="card">
+<div class="card offset-3 col-6">
     <div class="card-body">
-        <h1>Personal</h1>
+        <h1>Editar Personal</h1>
         <p>Edita información de personal existente</p>
-    </div>
-</div>
-<br />
-<div class="card shadow">
-    <div class="card-body">
-        @using (@Html.BeginForm("Editar", "Personal", FormMethod.Post))
-        {
+        <hr />
+        <form asp-controller="Personal" asp-action="Editar" method="post">
             <div class="form-horizontal">
                 <div class="form-group">
                     @Html.LabelFor(model => model.Nombre, "Nombre y Apellido", new { @class = "control-label" })
@@ -26,22 +21,16 @@
                         @Html.EditorFor(model => model.Dni, new { htmlAttributes = new { @class = "form-control", min = 10000000, max = 99999999, maxlength = 8, required = "true", autocomplete = "off" } })
                     </div>
                 </div>
-                <br />
-                <br />
-                <div class="row justify-content-between">
-                    <div class="col-2">
-                        <input id="btn_limpiar" type="reset" class="btn btn-outline-secondary btn-block" value="Restaurar" title="Restaura cambios en el formulario" />
-                    </div>
-
-                    <div class="col-2 offset-6">
-                        <input id="btn_aceptar" type="submit" class="btn btn-primary btn-block" value="Aceptar" title="Confirma la operación" />
-                    </div>
-                    <div class="col-2">
-                        <a class="btn btn-outline-secondary btn-block" role="button" href="~/Personal" title="Regresa a Personal"><i class="far fa-arrow-alt-to-left"></i> Volver</a>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button id="btn_limpiar" type="reset" class="btn btn-outline-secondary float-left" title="Restaura cambios en el formulario"><i class="far fa-trash-undo"></i> Restaurar</button>
+                        <a asp-controller="Personal" asp-action="Index" class="btn btn-outline-secondary float-right" role="button" title="Regresa a Personal"><i class="far fa-times"></i> Cancelar</a>
+                        <button id="btn_aceptar" type="submit" class="btn btn-outline-primary float-right btn-custom" title="Confirma la operación"><i class="far fa-check"></i>Aceptar</button>
                     </div>
                 </div>
             </div>
-        }
+        </form>
     </div>
     @if (ViewBag.Result == 0)
     {

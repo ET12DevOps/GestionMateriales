@@ -7,7 +7,7 @@ $(document).ready(function () {
     if (window.location.href.split(':').length === 2)
         baseURL = baseURL + appName + "/";
     
-    $('#divgrdPersonal').append('<table id="grdPersonal" class="table table-bordered table-striped table-hover"> <thead> <tr> <th> idPersonal </th> <th> Nombre y Apellido </th> <th> Dni </th> <th> Ficha Censal </th> <th> Opciones </th> </tr> </thead> </table>');
+    $('#divgrdPersonal').append('<table id="grdPersonal" class="table table-bordered table-hover"> <thead> <tr> <th> idPersonal </th> <th> Nombre y Apellido </th> <th> Dni </th> <th> Ficha Censal </th> <th> Opciones </th> </tr> </thead> </table>');
 
     jQuery.fn.dataTable.Api.register('processing()', function (show) {
         return this.iterator('table', function (ctx) {
@@ -65,11 +65,11 @@ function loadPersonal() {
                     "mRender": function (dato, type, row) {
                         var ini = '<div class="row">';
 
-                        var cab = '<div class="col-6">';
+                        var cab = '<div class="col-6 text-center">';
 
-                        var editarHtml = '<a title="Editar" href="' + baseURL + 'Personal/Editar/' + row.idPersonal + '"><i class="far fa-edit fa-2x"></i> </a> ';
+                        var editarHtml = '<a title="Editar" href="' + baseURL + 'Personal/Editar/' + row.idPersonal + '"><i class="far fa-edit"></i> </a> ';
 
-                        var borrarHtml = '<a title="Borrar" href="" data-toggle="modal" data-target="#myModal-' + row.idPersonal + '"><i class="far fa-trash-alt fa-2x"></i> </a><div class="modal fade" id= "myModal-' + row.idPersonal + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >' +
+                        var borrarHtml = '<a title="Borrar" href="" data-toggle="modal" data-target="#myModal-' + row.idPersonal + '" style="color:red"><i class="far fa-trash-alt"></i> </a><div class="modal fade" id= "myModal-' + row.idPersonal + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >' +
                             '<div class="modal-dialog modal-dialog-centered" role="document">' +
                             '<div class="modal-content">' +
                             '<div class="modal-header"><h4 class="modal-title" id="myModalLabel">Borrar Personal</h4></div>' +
@@ -80,8 +80,8 @@ function loadPersonal() {
                             '<p><strong>DNI:</strong> ' + row.dni + '</p>' +
                             '</div>' +
                             '<div class="modal-footer">' +
-                            '<a href="' + baseURL + 'Personal/Borrar/' + row.idPersonal + '" type="button" class="btn btn-danger">Aceptar</a>' +
-                            '<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>' +
+                            '<a href="' + baseURL + 'Personal/Borrar/' + row.idPersonal + '" type="button" class="btn btn-outline-danger"><i class="far fa-check"></i> Aceptar</a>' +
+                            '<button type="button" class="btn btn-outline-primary" data-dismiss="modal"><i class="far fa-times"></i> Cancelar</button>' +
                             '</div></div></div></div></div>';
 
                         var end = '</div>';
