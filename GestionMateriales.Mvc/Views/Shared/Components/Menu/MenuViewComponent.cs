@@ -21,7 +21,6 @@ namespace GestionMateriales.Mvc.View.Shared.Components.Menu
                 menu.Add(new MenuItem { Id = 70, nameOption = "Administración", controller = "", action = "", imageClass = "c-navy-500 far fa-users", estatus = true, isParent = true, parentId = 0 });
                 menu.Add(new MenuItem { Id = 71, nameOption = "Usuarios", controller = "Administracion", action = "Usuarios", imageClass = "", estatus = true, isParent = false, parentId = 70 });
                 menu.Add(new MenuItem { Id = 72, nameOption = "Roles", controller = "Administracion", action = "Roles", imageClass = "", estatus = true, isParent = false, parentId = 70 });
-                menu.Add(new MenuItem { Id = 11, nameOption = "Permisos", controller = "Administracion", action = "Permisos", imageClass = "", estatus = true, isParent = false, parentId = 70 });
                 menu.Add(new MenuItem { Id = 10, nameOption = "Documentos", controller = "", action = "", imageClass = "c-red-500 far fa-copy", estatus = true, isParent = true, parentId = 0 });
                 menu.Add(new MenuItem { Id = 11, nameOption = "Orden de Trabajo", controller = "OrdenTrabajo", action = "Index", imageClass = "", estatus = true, isParent = false, parentId = 10 });
                 menu.Add(new MenuItem { Id = 12, nameOption = "Orden de Trabajo de Aplicación", controller = "OrdenTrabajoAplicacion", action = "Index", imageClass = "", estatus = true, isParent = false, parentId = 10 });

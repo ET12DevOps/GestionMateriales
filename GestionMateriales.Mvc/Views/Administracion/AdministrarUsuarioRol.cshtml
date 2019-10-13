@@ -1,0 +1,33 @@
+﻿@model List<GestionMateriales.Mvc.ViewModels.Administracion.UsuarioRolViewModel>
+
+@{
+    var userId = ViewBag.userId;
+}
+
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Administrar Roles</h2>
+                </div>
+                <div class="card-body">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="form-check m-1">
+                            <input type="hidden" asp-for="@Model[i].IdRol" />
+                            <input type="hidden" asp-for="@Model[i].NombreRol" />
+                            <input asp-for="@Model[i].Seleccionado" class="form-check-input" />
+                            <label class="form-check-label" asp-for="@Model[i].Seleccionado">@Model[i].NombreRol</label>
+                        </div>
+                    }
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Actualizar" class="btn btn-outline-primary" style="width:auto" />
+                    <a asp-action="EditarUsuario" asp-route-id="@userId" class="btn btn-outline-primary" style="width:auto"><i class="far fa-times"></i> Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

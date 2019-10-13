@@ -1,0 +1,35 @@
+﻿@model GestionMateriales.Mvc.ViewModels.Administracion.CrearRolViewModel
+
+@{
+    ViewBag.Title = "Create New Role";
+}
+
+
+<div class="card offset-4 col-4">
+    <div class="card-body">
+        <h1>Crear Rol</h1>
+
+        <form asp-controller="Adminitracion" asp-action="CrearRol" method="post" class="mt-3">
+            <div asp-validation-summary="All" class="text-danger">
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreRol"></label>
+                <input asp-for="NombreRol" class="form-control">
+                <span asp-validation-for="NombreRol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Area"></label>
+                <input asp-for="Area" class="form-control">
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary" style="width:auto">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

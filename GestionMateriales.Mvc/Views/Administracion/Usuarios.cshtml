@@ -1,0 +1,89 @@
+﻿@model IEnumerable<GestionMateriales.Mvc.Identity.ApplicationUser>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h1>Usuarios</h1>
+        <a asp-action="CrearUsuario" asp-controller="Administracion" class="btn btn-outline-primary mb-3" style="width:auto"><i class="far fa-user"></i> Nuevo usuario</a>
+
+        @if (Model.Any())
+        {
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Creado Por</th>
+                        <th scope="col">Fecha Creación</th>
+                        <th scope="col">Dirección IP</th>
+                        <th scope="col">Habilitado</th>
+                        <th scope="col" width="10%">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Id</td>
+                            <td>@user.NombreCompleto</td>
+                            <td>@user.UserName</td>
+                            <td>@user.CreatedBy</td>
+                            <td>@user.CreationDate</td>
+                            <td>@user.CreationIp</td>
+                            <td>@user.Habilitado</td>
+                            <td>
+                                <form asp-action="BorrarUsuario" asp-route-id="@user.Id" method="post">
+                                    <a asp-controller="Administracion" asp-action="EditarUsuario" asp-route-id="@user.Id" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    <span id="confirmDeleteSpan_@user.Id" style="display:none">
+                                        <span>Seguro?</span>
+                                        <button type="submit" class="btn btn-outline-danger"><i class="far fa-check"></i></button>
+                                        <a href="#" class="btn btn-outline-primary" onclick="confirmDelete('@user.Id', false)"><i class="far fa-times"></i></a>
+                                    </span>
+
+                                    <span id="deleteSpan_@user.Id">
+                                        <a href="#" class="btn btn-outline-danger" onclick="confirmDelete('@user.Id', true)"><i class="far fa-trash-alt"></i></a>
+                                    </span>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>           
+        }
+        else
+        {
+            <div class="card">
+                <div class="card-header">
+                    No users created yet
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Use the button below to create a user
+                    </h5>
+                    <a class="btn btn-primary" style="width:auto" asp-controller="Administracion" asp-action="CrearUsuario">Nuevo usuario</a>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script>
+    function confirmDelete(uniqueId, isTrue) {
+
+        var deleteSpan = 'deleteSpan_' + uniqueId;
+        var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+
+        if (isTrue) {
+            $('#' + deleteSpan).hide();
+            $('#' + confirmDeleteSpan).show();
+        } else {
+            $('#' + deleteSpan).show();
+            $('#' + confirmDeleteSpan).hide();
+        }
+    }
+</script>

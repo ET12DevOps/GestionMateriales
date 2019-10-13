@@ -14,7 +14,16 @@ namespace GestionMateriales.Mvc.Migrations
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true)
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    Area = table.Column<string>(nullable: true),
+                    Habilitado = table.Column<int>(nullable: true),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreationDate = table.Column<DateTime>(nullable: true),
+                    CreationIp = table.Column<string>(nullable: true),
+                    LastUpdatedBy = table.Column<string>(nullable: true),
+                    LastUpdatedDate = table.Column<DateTime>(nullable: true),
+                    LastUpdatedIp = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,7 +50,8 @@ namespace GestionMateriales.Mvc.Migrations
                     LockoutEnabled = table.Column<int>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    Habilitado = table.Column<short>(nullable: true),
+                    NombreCompleto = table.Column<string>(nullable: true),
+                    Habilitado = table.Column<int>(nullable: true),
                     CreatedBy = table.Column<string>(nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: true),
                     CreationIp = table.Column<string>(nullable: true),

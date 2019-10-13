@@ -73,11 +73,7 @@
                         </div>
                     </div>
                 </div>
-                @*<ul id="menuLateral" class="sidebar-menu scrollable pos-r">
-                     @{ Html.RenderAction("Menu", "Home"); }
-                    </ul>*@
                 <ul id="menuLateral" class="sidebar-menu scrollable pos-r">
-                    @*<vc:menu></vc:menu>*@
                     @await Component.InvokeAsync("Menu")
                 </ul>
             </div>

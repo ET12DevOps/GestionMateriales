@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionMateriales.Mvc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191012184048_AddIdentity")]
+    [Migration("20191012204607_AddIdentity")]
     partial class AddIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,9 @@ namespace GestionMateriales.Mvc.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Name")
                         .HasMaxLength(256);
 
@@ -39,6 +42,8 @@ namespace GestionMateriales.Mvc.Migrations
                         .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -180,6 +185,29 @@ namespace GestionMateriales.Mvc.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("GestionMateriales.Mvc.Identity.ApplicationRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+
+                    b.Property<string>("Area");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("CreationDate");
+
+                    b.Property<string>("CreationIp");
+
+                    b.Property<int>("Habilitado");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<DateTime>("LastUpdatedDate");
+
+                    b.Property<string>("LastUpdatedIp");
+
+                    b.HasDiscriminator().HasValue("ApplicationRole");
+                });
+
             modelBuilder.Entity("GestionMateriales.Mvc.Identity.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -190,13 +218,15 @@ namespace GestionMateriales.Mvc.Migrations
 
                     b.Property<string>("CreationIp");
 
-                    b.Property<bool>("Habilitado");
+                    b.Property<int>("Habilitado");
 
                     b.Property<string>("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate");
 
                     b.Property<string>("LastUpdatedIp");
+
+                    b.Property<string>("NombreCompleto");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });

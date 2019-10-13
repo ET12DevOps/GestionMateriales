@@ -85,11 +85,11 @@ body a {
     margin-top: 50px;
 }
 
-.btnLogin {
+/*.btnLogin {
     font-family: 'quicksand_lightregular';
     font-size: 14px;
     border-radius: 15px !important;
-}
+}*/
 
 .textLoginPlaceholder {
     font-family: 'quicksand_lightregular';
@@ -98,9 +98,9 @@ body a {
 
 /*Register*/
 
-#Username, #Password, #Email, #ConfirmPassword {
+/*#Username, #Password, #Email, #ConfirmPassword {
     border-radius: 15px !important;
-}
+}*/
 
 /*Sidebar*/
 #nombreAplicacion {

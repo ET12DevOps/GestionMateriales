@@ -21,6 +21,11 @@ namespace GestionMateriales.Mvc.Identity
                 i.Property(o => o.LockoutEnabled).HasConversion<int>();
                 i.Property(o => o.PhoneNumberConfirmed).HasConversion<int>();
                 i.Property(o => o.TwoFactorEnabled).HasConversion<int>();
+                i.Property(o => o.Habilitado).HasConversion<int>();
+            });
+
+            builder.Entity<ApplicationRole>(i => {
+                i.Property(o => o.Habilitado).HasConversion<int>();
             });
 
             base.OnModelCreating(builder);

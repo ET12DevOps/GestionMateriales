@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GestionMateriales.Mvc.Identity
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationRole : IdentityRole
     {
-        public string NombreCompleto { get; set; }
+        public string Area { get; set; }
         public bool Habilitado { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreationDate { get; set; }
