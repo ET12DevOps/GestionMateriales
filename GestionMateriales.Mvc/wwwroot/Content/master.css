@@ -35,7 +35,7 @@ body label {
 /*fuente texto en tablas*/
 body td, th {
     font-family: 'quicksand_lightregular';
-    font-size: 14px;
+    font-size: 13px;
 }
 
 body table tbody div div a i {

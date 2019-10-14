@@ -43,7 +43,19 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, NombreCompleto = model.Nombre, CreatedBy = HttpContext.User.Identity.Name, CreationDate = DateTime.Now, CreationIp = "", Habilitado = true };
+                var user = new ApplicationUser { 
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    NombreCompleto = model.Nombre, 
+                    CreatedBy = HttpContext.User.Identity.Name, 
+                    CreationDate = DateTime.Now, 
+                    CreationIp = HttpContext.Connection.RemoteIpAddress.ToString(),
+                    LastUpdatedBy = HttpContext.User.Identity.Name,
+                    LastUpdatedDate = DateTime.Now,
+                    LastUpdatedIp = HttpContext.Connection.RemoteIpAddress.ToString(),
+                    Habilitado = true 
+                };
+
                 var result = await userManager.CreateAsync(user, model.Contrasenia);
 
                 if (result.Succeeded)
@@ -130,7 +142,10 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
                     Area = model.Area,
                     CreatedBy = HttpContext.User.Identity.Name,
                     CreationDate = DateTime.Now,
-                    CreationIp = "",
+                    CreationIp = HttpContext.Connection.RemoteIpAddress.ToString(),
+                    LastUpdatedBy = HttpContext.User.Identity.Name,
+                    LastUpdatedDate = DateTime.Now,
+                    LastUpdatedIp = HttpContext.Connection.RemoteIpAddress.ToString(),
                     Habilitado = true
                 };
 
@@ -202,7 +217,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
                 role.Area = model.Area;
                 role.LastUpdatedBy = HttpContext.User.Identity.Name;
                 role.LastUpdatedDate = DateTime.Now;
-                role.LastUpdatedIp = "";
+                role.LastUpdatedIp = HttpContext.Connection.RemoteIpAddress.ToString();
                 role.Habilitado = true;
 
                 // Update the Role using UpdateAsync
@@ -266,6 +281,9 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
                 user.Email = model.Email;
                 user.UserName = model.UserName;
                 user.NombreCompleto = model.NombreCompleto;
+                user.LastUpdatedBy = HttpContext.User.Identity.Name;
+                user.LastUpdatedDate = DateTime.Now;
+                user.LastUpdatedIp = HttpContext.Connection.RemoteIpAddress.ToString();
 
                 var result = await userManager.UpdateAsync(user);
 

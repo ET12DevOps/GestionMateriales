@@ -19,8 +19,7 @@
                         <th scope="col">Area</th>
                         <th scope="col">Creado Por</th>
                         <th scope="col">Fecha Creación</th>
-                        <th scope="col">Dirección IP</th>
-                        <th scope="col">Habilitado</th>
+                        <th scope="col">IP</th>
                         <th scope="col" width="10%">Acciones</th>
                     </tr>
                 </thead>
@@ -34,7 +33,6 @@
                             <td>@role.CreatedBy</td>
                             <td>@role.CreationDate</td>
                             <td>@role.CreationIp</td>
-                            <td>@role.Habilitado</td>
                             <td>
                                 <form asp-action="BorrarRol" asp-route-id="@role.Id" method="post">
                                     <a asp-controller="Administracion" asp-action="EditarRol" asp-route-id="@role.Id" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>

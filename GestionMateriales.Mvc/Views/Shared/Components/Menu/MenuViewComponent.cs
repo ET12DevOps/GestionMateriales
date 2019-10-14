@@ -59,15 +59,15 @@ namespace GestionMateriales.Mvc.View.Shared.Components.Menu
                 menu.Add(new MenuItem { Id = 60, nameOption = "Personal", controller = "Personal", action = "Index", imageClass = "c-pink-500 far fa-male", estatus = true, isParent = false, parentId = 0 });
             }
 
-            //if (User.IsInRole("deposito"))
-            //{
-            //    menu.Add(new MenuItem { Id = 20, nameOption = "Stock", controller = "", action = "", imageClass = "c-deep-purple-500 far fa-sync-alt", estatus = true, isParent = true, parentId = 0 });
-            //    menu.Add(new MenuItem { Id = 21, nameOption = "Entrada", controller = "Stock", action = "Sumar", imageClass = "", estatus = true, isParent = false, parentId = 20 });
-            //    menu.Add(new MenuItem { Id = 22, nameOption = "Salida", controller = "Stock", action = "Restar", imageClass = "", estatus = true, isParent = false, parentId = 20 });
-            //    menu.Add(new MenuItem { Id = 23, nameOption = "Historial Entradas", controller = "Stock", action = "HistorialIngresos", imageClass = "", estatus = true, isParent = false, parentId = 20 });
-            //    menu.Add(new MenuItem { Id = 24, nameOption = "Historial Salidas", controller = "Stock", action = "HistorialEgresos", imageClass = "", estatus = true, isParent = false, parentId = 20 });
-            //    menu.Add(new MenuItem { Id = 40, nameOption = "Materiales", controller = "Material", action = "Index", imageClass = "c-brown-500 far fa-wrench", estatus = true, isParent = false, parentId = 0 });
-            //}
+            if (User.IsInRole("Deposito"))
+            {
+                menu.Add(new MenuItem { Id = 20, nameOption = "Stock", controller = "", action = "", imageClass = "c-deep-purple-500 far fa-sync-alt", estatus = true, isParent = true, parentId = 0 });
+                menu.Add(new MenuItem { Id = 21, nameOption = "Entrada", controller = "Stock", action = "Sumar", imageClass = "", estatus = true, isParent = false, parentId = 20 });
+                menu.Add(new MenuItem { Id = 22, nameOption = "Salida", controller = "Stock", action = "Restar", imageClass = "", estatus = true, isParent = false, parentId = 20 });
+                menu.Add(new MenuItem { Id = 23, nameOption = "Historial Entradas", controller = "Stock", action = "HistorialIngresos", imageClass = "", estatus = true, isParent = false, parentId = 20 });
+                menu.Add(new MenuItem { Id = 24, nameOption = "Historial Salidas", controller = "Stock", action = "HistorialEgresos", imageClass = "", estatus = true, isParent = false, parentId = 20 });
+                menu.Add(new MenuItem { Id = 40, nameOption = "Materiales", controller = "Material", action = "Index", imageClass = "c-brown-500 far fa-wrench", estatus = true, isParent = false, parentId = 0 });
+            }
 
             //if (User.IsInRole("compras"))
             //{

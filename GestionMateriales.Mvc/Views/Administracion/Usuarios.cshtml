@@ -19,8 +19,7 @@
                         <th scope="col">Username</th>
                         <th scope="col">Creado Por</th>
                         <th scope="col">Fecha Creación</th>
-                        <th scope="col">Dirección IP</th>
-                        <th scope="col">Habilitado</th>
+                        <th scope="col">IP</th>
                         <th scope="col" width="10%">Acciones</th>
                     </tr>
                 </thead>
@@ -34,7 +33,6 @@
                             <td>@user.CreatedBy</td>
                             <td>@user.CreationDate</td>
                             <td>@user.CreationIp</td>
-                            <td>@user.Habilitado</td>
                             <td>
                                 <form asp-action="BorrarUsuario" asp-route-id="@user.Id" method="post">
                                     <a asp-controller="Administracion" asp-action="EditarUsuario" asp-route-id="@user.Id" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
