@@ -26,14 +26,14 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [AllowAnonymous]
-        public IActionResult NotFound()
+        public IActionResult NotFound404()
         {
             var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
 
             //logger.LogError($"The path {exceptionHandlerPathFeature.Path} " +
             //    $"threw an exception {exceptionHandlerPathFeature.Error}");
 
-            return View("NotFound", "Error");
+            return View("NotFound404", "Error");
         }
     }
 }

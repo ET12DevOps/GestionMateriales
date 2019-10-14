@@ -153,7 +153,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (role == null)
             {
                 ViewBag.ErrorMessage = $"Rol con Id = {id} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
 
             var model = new EditarRolViewModel
@@ -187,7 +187,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (role == null)
             {
                 ViewBag.ErrorMessage = $"Rol con Id = {model.Id} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
             else
             {
@@ -223,7 +223,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"Usuario con Id = {id} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
 
             // GetClaimsAsync retunrs the list of user Claims
@@ -252,7 +252,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"Usuario con Id = {model.Id} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
             else
             {
@@ -286,7 +286,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"Usuario con Id = {userId} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
 
             var model = new List<UsuarioRolViewModel>();
@@ -322,7 +322,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"Usuario con Id = {userId} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
 
             var roles = await userManager.GetRolesAsync(user);
@@ -356,7 +356,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (role == null)
             {
                 ViewBag.ErrorMessage = $"Rol con Id = {roleId} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
 
             var model = new List<EditarUsuarioEnRol>();
@@ -392,7 +392,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (role == null)
             {
                 ViewBag.ErrorMessage = $"Rol con Id = {roleId} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
 
             for (int i = 0; i < model.Count; i++)
@@ -434,7 +434,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (role == null)
             {
                 ViewBag.ErrorMessage = $"Rol con Id = {id} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
             else
             {
@@ -462,7 +462,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"Usuario con Id = {id} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
             else
             {
@@ -490,7 +490,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"Usuario con Id = {userId} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
 
             // UserManager service GetClaimsAsync method gets all the current claims of the user
@@ -531,7 +531,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"Usuario con Id = {model.UserId} no existe";
-                return View("NotFound", "Error");
+                return View("NotFound404", "Error");
             }
 
             // Get all the user existing claims and delete them

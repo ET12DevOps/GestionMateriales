@@ -41,11 +41,11 @@ namespace GestionMateriales.Mvc.Controllers.Aplicacion
             {
                 personal = personalService.BuscarPersonalCon(id);
             }
-            catch (PersonalException e)
+            catch (PersonalException)
             {
-                return RedirectToAction("NotFound", "Error");
+                return RedirectToAction("NotFound404", "Error");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return RedirectToAction("Error", "Error");
             }
