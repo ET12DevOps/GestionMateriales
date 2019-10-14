@@ -67,9 +67,9 @@ function loadPersonal() {
 
                         var cab = '<div class="col-6 text-center">';
 
-                        var editarHtml = '<a title="Editar" href="' + baseURL + 'Personal/Editar/' + row.idPersonal + '"><i class="far fa-edit"></i> </a> ';
+                        var editarHtml = '<a title="Editar" href="' + baseURL + 'Personal/Editar/' + row.idPersonal + '"><i class="fad fa-edit"></i> </a> ';
 
-                        var borrarHtml = '<a title="Borrar" href="" data-toggle="modal" data-target="#myModal-' + row.idPersonal + '" style="color:red"><i class="far fa-trash-alt"></i> </a><div class="modal fade" id= "myModal-' + row.idPersonal + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >' +
+                        var borrarHtml = '<a title="Borrar" href="" data-toggle="modal" data-target="#myModal-' + row.idPersonal + '" style="color:red"><i class="fad fa-trash-alt"></i> </a><div class="modal fade" id= "myModal-' + row.idPersonal + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >' +
                             '<div class="modal-dialog modal-dialog-centered" role="document">' +
                             '<div class="modal-content">' +
                             '<div class="modal-header"><h4 class="modal-title" id="myModalLabel">Borrar Personal</h4></div>' +
@@ -80,8 +80,8 @@ function loadPersonal() {
                             '<p><strong>DNI:</strong> ' + row.dni + '</p>' +
                             '</div>' +
                             '<div class="modal-footer">' +
-                            '<a href="' + baseURL + 'Personal/Borrar/' + row.idPersonal + '" type="button" class="btn btn-outline-danger"><i class="far fa-check"></i> Aceptar</a>' +
-                            '<button type="button" class="btn btn-outline-primary" data-dismiss="modal"><i class="far fa-times"></i> Cancelar</button>' +
+                            '<a href="' + baseURL + 'Personal/Borrar/' + row.idPersonal + '" type="button" class="btn btn-outline-danger"><i class="fad fa-check"></i> Aceptar</a>' +
+                            '<button type="button" class="btn btn-outline-primary" data-dismiss="modal"><i class="fad fa-times"></i> Cancelar</button>' +
                             '</div></div></div></div></div>';
 
                         var end = '</div>';

@@ -8,7 +8,7 @@ using System;
 
 namespace GestionMateriales.Mvc.Controllers.Aplicacion
 {
-    [Authorize(Roles = "Administrador, Oficina Técnica")]
+    [Authorize(Roles = "Desarrollo, Administrador, Oficina Técnica")]
     //[Route("/Personal")]
     public class PersonalController : Controller
     {

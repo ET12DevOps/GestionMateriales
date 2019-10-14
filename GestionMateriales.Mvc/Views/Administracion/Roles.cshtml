@@ -7,7 +7,7 @@
 <div class="card">
     <div class="card-body">
         <h1>Roles</h1>
-        <a asp-action="CrearRol" asp-controller="Administracion" class="btn btn-outline-primary mb-3" style="width:auto"><i class="far fa-user-cog"></i> Nuevo Rol</a>
+        <a asp-action="CrearRol" asp-controller="Administracion" class="btn btn-outline-primary mb-3" style="width:auto"><i class="fad fa-user-cog"></i> Nuevo Rol</a>
 
         @if (Model.Any())
         {
@@ -35,15 +35,15 @@
                             <td>@role.CreationIp</td>
                             <td>
                                 <form asp-action="BorrarRol" asp-route-id="@role.Id" method="post">
-                                    <a asp-controller="Administracion" asp-action="EditarRol" asp-route-id="@role.Id" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    <a asp-controller="Administracion" asp-action="EditarRol" asp-route-id="@role.Id" class="btn btn-outline-primary"><i class="fad fa-edit"></i></a>
                                     <span id="confirmDeleteSpan_@role.Id" style="display:none">
                                         <span>Seguro?</span>
-                                        <button type="submit" class="btn btn-outline-danger"><i class="far fa-check"></i></button>
-                                        <a href="#" class="btn btn-outline-primary" onclick="confirmDelete('@role.Id', false)"><i class="far fa-times"></i></a>
+                                        <button type="submit" class="btn btn-outline-danger"><i class="fad fa-check"></i></button>
+                                        <a href="#" class="btn btn-outline-primary" onclick="confirmDelete('@role.Id', false)"><i class="fad fa-times"></i></a>
                                     </span>
 
                                     <span id="deleteSpan_@role.Id">
-                                        <a href="#" class="btn btn-outline-danger" onclick="confirmDelete('@role.Id', true)"><i class="far fa-trash-alt"></i></a>
+                                        <a href="#" class="btn btn-outline-danger" onclick="confirmDelete('@role.Id', true)"><i class="fad fa-trash-alt"></i></a>
                                     </span>
                                 </form>
                             </td>

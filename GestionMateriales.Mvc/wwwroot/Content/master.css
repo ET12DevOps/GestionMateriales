@@ -44,7 +44,7 @@ body table tbody div div a i {
 
 body a {
     font-family: 'quicksand_lightregular';
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .sidebar-menu > li > a{
@@ -123,9 +123,9 @@ body a {
 }*/
 
 /*Sidebar*/
-#nombreAplicacion {
+.nombreAplicacion {
     font-family: 'quicksandbold' !important;
-    font-size: 20px !important;
+    font-size: 25px !important;
 }
 
 .btnLogout {

@@ -31,7 +31,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Desarrollo, Administrador")]
         public IActionResult CrearUsuario()
         {
             return View();

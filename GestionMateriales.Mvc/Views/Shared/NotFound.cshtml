@@ -1,0 +1,23 @@
+﻿@*<div class='pos-a t-0 l-0 bgc-white w-100 h-100 d-f fxd-r fxw-w ai-c jc-c pos-r p-30'>
+    <div class='mR-60'>
+        <img alt='#' src='~/Content/adminator/images/404.png' />
+    </div>
+
+    <div class='d-f jc-c fxd-c'>
+        <h1 class='mB-30 fw-900 lh-1 c-red-500' style="font-size: 60px;">Error @ViewBag.ErrorCode: @ViewBag.ErrorTitle</h1>
+        <p class='mB-30 fsz-def c-grey-700'>@ViewBag.ErrorMessage</p>
+        <div>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">Volver al Inicio</a>
+        </div>
+    </div>
+</div>*@
+
+<div class="card">
+    <div class="card-header">
+        <h1 class='c-red-500' style="font-size: 60px;">Error @ViewBag.ErrorCode: @ViewBag.ErrorTitle</h1>
+    </div>
+    <div class="card-body">
+        <p class='mB-30 fsz-def c-grey-700'>@ViewBag.ErrorMessage</p>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary"><i class="far fa-home"></i> Volver al Inicio</a>
+    </div>
+</div>

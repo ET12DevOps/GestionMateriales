@@ -7,7 +7,7 @@
 <div class="card">
     <div class="card-body">
         <h1>Usuarios</h1>
-        <a asp-action="CrearUsuario" asp-controller="Administracion" class="btn btn-outline-primary mb-3" style="width:auto"><i class="far fa-user"></i> Nuevo Usuario</a>
+        <a asp-action="CrearUsuario" asp-controller="Administracion" class="btn btn-outline-primary mb-3" style="width:auto"><i class="fad fa-user"></i> Nuevo Usuario</a>
 
         @if (Model.Any())
         {
@@ -35,15 +35,15 @@
                             <td>@user.CreationIp</td>
                             <td>
                                 <form asp-action="BorrarUsuario" asp-route-id="@user.Id" method="post">
-                                    <a asp-controller="Administracion" asp-action="EditarUsuario" asp-route-id="@user.Id" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                    <a asp-controller="Administracion" asp-action="EditarUsuario" asp-route-id="@user.Id" class="btn btn-outline-primary"><i class="fad fa-edit"></i></a>
                                     <span id="confirmDeleteSpan_@user.Id" style="display:none">
                                         <span>Seguro?</span>
-                                        <button type="submit" class="btn btn-outline-danger"><i class="far fa-check"></i></button>
-                                        <a href="#" class="btn btn-outline-primary" onclick="confirmDelete('@user.Id', false)"><i class="far fa-times"></i></a>
+                                        <button type="submit" class="btn btn-outline-danger"><i class="fad fa-check"></i></button>
+                                        <a href="#" class="btn btn-outline-primary" onclick="confirmDelete('@user.Id', false)"><i class="fad fa-times"></i></a>
                                     </span>
 
                                     <span id="deleteSpan_@user.Id">
-                                        <a href="#" class="btn btn-outline-danger" onclick="confirmDelete('@user.Id', true)"><i class="far fa-trash-alt"></i></a>
+                                        <a href="#" class="btn btn-outline-danger" onclick="confirmDelete('@user.Id', true)"><i class="fad fa-trash-alt"></i></a>
                                     </span>
                                 </form>
                             </td>

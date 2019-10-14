@@ -1,20 +1,38 @@
 ﻿@using Microsoft.AspNetCore.Identity
 
 <li class="nav-item">
-    <a asp-controller="Ayuda" asp-action="Index" class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Ayuda"><i class="far fa-question" ></i></a>
+    <a asp-controller="Ayuda" asp-action="Index" class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Ayuda"><i class="fad fa-question" ></i></a>
 </li>
 <li class="nav-item">
-    <a asp-controller="About" asp-action="Index" class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Nosotros"><i class="far fa-users" ></i></a>
+    <a asp-controller="About" asp-action="Index" class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Nosotros"><i class="fad fa-users" ></i></a>
 </li>
 <li class="nav-item">
-    <a asp-controller="Usuario" asp-action="Index" class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Configuración"><i class="far fa-user"></i> @User.Identity.Name</a>
+    @if (User.IsInRole("Desarrollo"))
+    {
+        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Rol"><i class="fad fa-user-hard-hat"></i> Desarrollo</a>
+    }
+    @if (User.IsInRole("Administrador"))
+    {
+        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Rol"><i class="fad fa-user-shield"></i> Administrador</a>
+    }
+    @if (User.IsInRole("Oficina Técnica"))
+    {
+        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Rol"><i class="fad fa-user-tag"></i> Oficina Técnica</a>
+    }
+    @if (User.IsInRole("Depósito"))
+    {
+        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Rol"><i class="fad fa-user-plus"></i> Depósito</a>
+    }
+    @if (User.IsInRole("Directivo"))
+    {
+        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Rol"><i class="fad fa-user-tie"></i> Directivo</a>
+    }
+</li>
+<li class="nav-item">
+    <a asp-controller="Usuario" asp-action="Index" class="nav-link" data-toggle="tooltip" data-placement="bottom" data-original-title="Configuración"><i class="fad fa-user"></i> @User.Identity.Name</a>
 </li>
 <li class="nav-item">
     <form asp-controller="Administracion" asp-action="Logout" method="post">
-        <button type="submit" class="nav-link btn btn-link text-dark btnLogout"><i class="far fa-sign-out-alt"></i></button>
+        <button type="submit" class="nav-link btn btn-link text-dark btnLogout" data-toggle="tooltip" data-placement="bottom" data-original-title="Salir"><i class="fad fa-sign-out-alt"></i></button>
     </form>
 </li>
-
-
-
-
