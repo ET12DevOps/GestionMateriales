@@ -8,6 +8,7 @@ using GestionMateriales.Mvc.ViewModels.Administracion;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace GestionMateriales.Mvc.Controllers.Administracion
 {
@@ -18,12 +19,15 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         private readonly SignInManager<ApplicationUser> signInManager;
 
         private readonly RoleManager<ApplicationRole> roleManager;
+        
+        private readonly ILogger<AdministracionController> logger;
 
-        public AdministracionController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager)
+        public AdministracionController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager, ILogger<AdministracionController> logger)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -69,16 +73,19 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(
-                    model.Email, model.Contrasenia, model.Recordarme, true);
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Contrasenia, model.Recordarme, true);
 
                 if (result.Succeeded)
                 {
+                    logger.LogInformation("Login Correcto Usuario: {Email}", model.Email);
+
                     return RedirectToAction("index", "home");
                 }
 
                 ModelState.AddModelError(string.Empty, "Error ingreso, verifique usuario y/o contraseña");
             }
+
+            logger.LogInformation("Login Incorrecto Usuario: {Email}", model.Email);
 
             return View(model);
         }

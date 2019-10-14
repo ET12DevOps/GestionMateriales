@@ -184,6 +184,34 @@ INSERT INTO `itemordentrabajoaplicacion` VALUES (1,'dasdas',3,1,1),(2,'dasdas',6
 UNLOCK TABLES;
 
 --
+-- Table structure for table `logs`
+--
+
+DROP TABLE IF EXISTS `logs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Timestamp` varchar(100) DEFAULT NULL,
+  `Level` varchar(15) DEFAULT NULL,
+  `Message` text,
+  `Exception` text,
+  `Properties` text,
+  `_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3947 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `logs`
+--
+
+LOCK TABLES `logs` WRITE;
+/*!40000 ALTER TABLE `logs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `logs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `material`
 --
 
@@ -415,7 +443,7 @@ CREATE TABLE `personal` (
   `LAST_UPDATED_IP` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idPersonal`),
   UNIQUE KEY `idPersonal` (`idPersonal`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,7 +452,7 @@ CREATE TABLE `personal` (
 
 LOCK TABLES `personal` WRITE;
 /*!40000 ALTER TABLE `personal` DISABLE KEYS */;
-INSERT INTO `personal` VALUES (1,'Carlos Alberto',12345678,123456,'\0','jonathan','2018-09-09 00:46:31','::1','Carolina Espinola','2018-11-05 10:08:32','::1'),(2,'Jean Pierre',23456789,234567,'','jonathan','2018-10-15 13:46:50','::1','administrador','2018-10-17 10:40:01','::1'),(3,'Roberto Joaquin',34567890,345678,'','administrador','2018-10-17 10:41:38','::1','administrador','2018-10-17 10:41:38','::1'),(4,'Rolando Rueda',45678901,456789,'','administrador','2018-10-17 10:42:30','::1','administrador','2018-10-17 10:42:30','::1'),(5,'Carolina Espinola',56789012,567890,'','administrador','2018-10-17 10:45:10','::1','administrador','2018-10-17 10:45:10','::1'),(6,'Francisco Scagliarini',67890123,678901,'','administrador','2018-10-17 10:47:05','::1','administrador','2018-10-17 10:47:05','::1'),(7,'Jose Algol',23232112,444433,'','jonathan','2018-10-18 11:27:36','::1','jonathan','2018-10-20 12:36:06','::1'),(8,'Pedro Picapieda',34344545,232321,'','jonathan','2018-10-19 23:09:27','::1','jonathan','2018-10-20 12:36:09','::1'),(9,'Jorge Sonico',34344548,555544,'','jonathan','2018-10-19 23:13:06','::1','jonathan','2018-10-20 12:36:12','::1'),(10,'Pablo Marmol',12324545,565654,'','jonathan','2018-10-19 23:25:56','::1','jonathan','2018-10-20 12:35:30','::1'),(11,'dasdasdas',23235577,777555,'','jonathan','2018-10-19 23:29:19','::1','jonathan','2018-10-20 12:35:33','::1'),(12,'El Oso Yogi',23234556,454455,'','jonathan','2018-10-19 23:31:28','::1','jonathan','2018-10-20 12:35:36','::1'),(13,'Vilma Picapiedra',43434355,545433,'','jonathan','2018-10-19 23:37:42','::1','jonathan','2018-10-20 12:35:39','::1'),(14,'Homero Simpson',23232578,545467,'','jonathan','2018-10-20 12:46:29','::1','jonathan','2018-10-20 14:18:55','::1'),(15,'El mono de Jade',23235544,656734,'','jonathan','2018-10-20 12:49:02','::1','jonathan','2018-10-20 13:47:07','::1'),(16,'dsfsdfsdfsd',23235522,656737,'\0','jonathan','2018-10-20 12:50:04','::1','jonathan','2018-10-20 12:50:04','::1'),(17,'dfsdfsdfsd',34345667,767688,'\0','jonathan','2018-10-20 12:53:52','::1','jonathan','2018-10-20 12:53:52','::1'),(18,'dadasdas',34346644,232345,'\0','jonathan','2018-10-20 12:56:23','::1','jonathan','2018-10-20 12:56:23','::1'),(19,'dadasdasdasdas',34346667,232456,'\0','jonathan','2018-10-20 12:57:12','::1','jonathan','2018-10-20 12:57:12','::1'),(20,'dasdasdasdas',56564343,545663,'\0','jonathan','2018-10-20 12:59:41','::1','jonathan','2018-10-20 12:59:41','::1'),(21,'gfgdgdfg',34346689,343467,'\0','jonathan','2018-10-20 13:01:16','::1','jonathan','2018-10-20 13:01:16','::1'),(22,'dgdgdfgdgdfg',23235677,454677,'\0','jonathan','2018-10-20 13:01:58','::1','jonathan','2018-10-20 13:01:58','::1'),(23,'kkkkdasdasdas',23223344,555332,'','jonathan','2018-11-02 22:54:35','::1','jonathan','2018-11-03 13:33:41','::1'),(24,'dasdasdas',32231244,232114,'','jonathan','2018-11-02 22:59:03','::1','jonathan','2018-11-02 22:59:03','::1'),(25,'dasdasdasdasdas',54533455,545466,'','jonathan','2018-11-02 22:59:11','::1','jonathan','2018-11-02 22:59:11','::1'),(26,'dasdasdasdas',56565443,232556,'','jonathan','2018-11-03 13:30:57','::1','jonathan','2018-11-03 13:30:57','::1'),(27,'adasdasfsd',34345678,343435,'','jonathan','2018-11-03 13:34:17','::1','jonathan','2018-11-03 13:34:17','::1'),(28,'adsdasdasdas',78787855,656578,'','jonathan','2018-11-03 13:34:31','::1','jonathan','2018-11-03 13:34:31','::1'),(29,'pepe Argento',95789456,123489,'','Carolina Espinola','2018-11-05 10:10:45','::1','Carolina Espinola','2018-11-05 10:10:45','::1'),(30,'Cosme Fulanito',28283943,199394,'','jonathan','2018-11-07 18:16:53','::1','jonathan','2018-11-07 18:16:53','::1'),(31,'dasdasda',34343566,121213,'\0','ivanvgms@gmail.com','2019-03-05 00:31:11','localhost','ivanvgms@gmail.com','2019-03-05 00:31:11','localhost'),(32,'Ariana Grande',12121244,333222,'\0','ivanvgms@gmail.com','2019-03-05 00:34:58','localhost','ivanvgms@gmail.com','2019-03-05 00:34:58','localhost'),(33,'First To Eleven',38383929,101010,'','ivanvgms@gmail.com','2019-03-05 00:43:11','localhost','ivanvgms@gmail.com','2019-03-05 00:43:11','localhost');
+INSERT INTO `personal` VALUES (1,'Carlos Alberto',12345678,123456,'\0','jonathan','2018-09-09 00:46:31','::1','Carolina Espinola','2018-11-05 10:08:32','::1'),(2,'Jean Pierre Paredes',23456789,234567,'','jonathan','2018-10-15 13:46:50','::1','jonathanvgms@gmail.com','2019-10-13 19:40:18','localhost'),(3,'Roberto Joaquin',34567890,345678,'','administrador','2018-10-17 10:41:38','::1','administrador','2018-10-17 10:41:38','::1'),(4,'Rolando Rueda',45678901,456789,'','administrador','2018-10-17 10:42:30','::1','administrador','2018-10-17 10:42:30','::1'),(5,'Carolina Espinola',56789012,567890,'','administrador','2018-10-17 10:45:10','::1','jonathanvgms@gmail.com','2019-10-13 19:47:07','localhost'),(6,'Francisco Scagliarini',67890123,678901,'','administrador','2018-10-17 10:47:05','::1','administrador','2018-10-17 10:47:05','::1'),(7,'Jose Algol',23232112,444433,'\0','jonathan','2018-10-18 11:27:36','::1','jonathanvgms@gmail.com','2019-10-13 19:40:32','localhost'),(8,'Pedro Picapieda',34344545,232321,'','jonathan','2018-10-19 23:09:27','::1','jonathan','2018-10-20 12:36:09','::1'),(9,'Jorge Sonico',34344548,555544,'','jonathan','2018-10-19 23:13:06','::1','jonathan','2018-10-20 12:36:12','::1'),(10,'Pablo Marmol',12324545,565654,'','jonathan','2018-10-19 23:25:56','::1','jonathan','2018-10-20 12:35:30','::1'),(11,'dasdasdas',23235577,777555,'\0','jonathan','2018-10-19 23:29:19','::1','jonathanvgms@gmail.com','2019-10-13 19:39:44','localhost'),(12,'El Oso Yogi',23234556,454455,'','jonathan','2018-10-19 23:31:28','::1','jonathan','2018-10-20 12:35:36','::1'),(13,'Vilma Picapiedra',43434355,545433,'','jonathan','2018-10-19 23:37:42','::1','jonathan','2018-10-20 12:35:39','::1'),(14,'Homero Simpson',23232578,545467,'','jonathan','2018-10-20 12:46:29','::1','jonathan','2018-10-20 14:18:55','::1'),(15,'El mono de Jade',23235544,656734,'','jonathan','2018-10-20 12:49:02','::1','jonathan','2018-10-20 13:47:07','::1'),(16,'dsfsdfsdfsd',23235522,656737,'\0','jonathan','2018-10-20 12:50:04','::1','jonathan','2018-10-20 12:50:04','::1'),(17,'dfsdfsdfsd',34345667,767688,'\0','jonathan','2018-10-20 12:53:52','::1','jonathan','2018-10-20 12:53:52','::1'),(18,'dadasdas',34346644,232345,'\0','jonathan','2018-10-20 12:56:23','::1','jonathan','2018-10-20 12:56:23','::1'),(19,'dadasdasdasdas',34346667,232456,'\0','jonathan','2018-10-20 12:57:12','::1','jonathan','2018-10-20 12:57:12','::1'),(20,'dasdasdasdas',56564343,545663,'\0','jonathan','2018-10-20 12:59:41','::1','jonathan','2018-10-20 12:59:41','::1'),(21,'gfgdgdfg',34346689,343467,'\0','jonathan','2018-10-20 13:01:16','::1','jonathan','2018-10-20 13:01:16','::1'),(22,'dgdgdfgdgdfg',23235677,454677,'\0','jonathan','2018-10-20 13:01:58','::1','jonathan','2018-10-20 13:01:58','::1'),(23,'kkkkdasdasdas',23223344,555332,'\0','jonathan','2018-11-02 22:54:35','::1','jonathanvgms@gmail.com','2019-10-13 19:40:35','localhost'),(24,'dasdasdas',32231244,232114,'\0','jonathan','2018-11-02 22:59:03','::1','jonathanvgms@gmail.com','2019-10-13 19:39:31','localhost'),(25,'dasdasdasdasdas',54533455,545466,'\0','jonathan','2018-11-02 22:59:11','::1','jonathanvgms@gmail.com','2019-10-13 19:39:39','localhost'),(26,'dasdasdasdas',56565443,232556,'\0','jonathan','2018-11-03 13:30:57','::1','jonathanvgms@gmail.com','2019-10-13 19:39:34','localhost'),(27,'adasdasfxxxx',34345678,343435,'\0','jonathan','2018-11-03 13:34:17','::1','jonathanvgms@gmail.com','2019-10-13 19:39:57','localhost'),(28,'adsdasdasdas',78787855,656578,'\0','jonathan','2018-11-03 13:34:31','::1','jonathanvgms@gmail.com','2019-10-13 19:40:01','localhost'),(29,'Pepe Argento',95789456,123489,'','Carolina Espinola','2018-11-05 10:10:45','::1','jonathanvgms@gmail.com','2019-10-13 19:41:03','localhost'),(30,'Cosme Fulanito',28283943,199394,'','jonathan','2018-11-07 18:16:53','::1','jonathan','2018-11-07 18:16:53','::1'),(31,'dasdasda',34343566,121213,'\0','ivanvgms@gmail.com','2019-03-05 00:31:11','localhost','ivanvgms@gmail.com','2019-03-05 00:31:11','localhost'),(32,'Ariana Grande',12121244,333222,'\0','ivanvgms@gmail.com','2019-03-05 00:34:58','localhost','ivanvgms@gmail.com','2019-03-05 00:34:58','localhost'),(33,'First To Eleven',38383929,101010,'\0','ivanvgms@gmail.com','2019-03-05 00:43:11','localhost','jonathanvgms@gmail.com','2019-10-13 19:40:45','localhost'),(34,'dadasdas',12312333,123123,'\0',NULL,'2019-10-12 02:07:52','localhost','jonathanvgms@gmail.com','2019-10-13 19:39:27','localhost');
 /*!40000 ALTER TABLE `personal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -688,14 +716,6 @@ LOCK TABLES `unidad` WRITE;
 INSERT INTO `unidad` VALUES (1,'Cantidad'),(2,'Litros'),(3,'Metros'),(4,'M2'),(5,'M3'),(6,'Kg');
 /*!40000 ALTER TABLE `unidad` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'sgm_oficinatecnica'
---
-
---
--- Dumping routines for database 'sgm_oficinatecnica'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -706,4 +726,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-20  0:31:17
+-- Dump completed on 2019-10-13 21:24:38

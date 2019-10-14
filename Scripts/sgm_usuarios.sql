@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `__efmigrationshistory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `__efmigrationshistory` (
-  `MigrationId` varchar(95) NOT NULL,
+  `MigrationId` varchar(150) NOT NULL,
   `ProductVersion` varchar(32) NOT NULL,
   PRIMARY KEY (`MigrationId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -37,7 +37,7 @@ CREATE TABLE `__efmigrationshistory` (
 
 LOCK TABLES `__efmigrationshistory` WRITE;
 /*!40000 ALTER TABLE `__efmigrationshistory` DISABLE KEYS */;
-INSERT INTO `__efmigrationshistory` VALUES ('00000000000000_CreateIdentitySchema','2.2.2-servicing-10034');
+INSERT INTO `__efmigrationshistory` VALUES ('20191012204607_AddIdentity','2.2.6-servicing-10079');
 /*!40000 ALTER TABLE `__efmigrationshistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,10 +49,10 @@ DROP TABLE IF EXISTS `aspnetroleclaims`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aspnetroleclaims` (
-  `Id` int(11) NOT NULL,
-  `RoleId` varchar(255) NOT NULL,
-  `ClaimType` longtext,
-  `ClaimValue` longtext,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `RoleId` varchar(767) NOT NULL,
+  `ClaimType` text,
+  `ClaimValue` text,
   PRIMARY KEY (`Id`),
   KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`),
   CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE
@@ -76,10 +76,19 @@ DROP TABLE IF EXISTS `aspnetroles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aspnetroles` (
-  `Id` varchar(255) NOT NULL,
+  `Id` varchar(767) NOT NULL,
   `Name` varchar(256) DEFAULT NULL,
   `NormalizedName` varchar(256) DEFAULT NULL,
-  `ConcurrencyStamp` longtext,
+  `ConcurrencyStamp` text,
+  `Discriminator` text NOT NULL,
+  `Area` text,
+  `Habilitado` int(11) DEFAULT NULL,
+  `CreatedBy` text,
+  `CreationDate` datetime DEFAULT NULL,
+  `CreationIp` text,
+  `LastUpdatedBy` text,
+  `LastUpdatedDate` datetime DEFAULT NULL,
+  `LastUpdatedIp` text,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `RoleNameIndex` (`NormalizedName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -91,7 +100,7 @@ CREATE TABLE `aspnetroles` (
 
 LOCK TABLES `aspnetroles` WRITE;
 /*!40000 ALTER TABLE `aspnetroles` DISABLE KEYS */;
-INSERT INTO `aspnetroles` VALUES ('1','administrador','ADMINISTRADOR',NULL);
+INSERT INTO `aspnetroles` VALUES ('2bed541d-8bb5-4069-b2c9-21b8bcef2f36','Jefatura de Taller','JEFATURA DE TALLER','d3a36c18-1c60-4ba6-b176-07eef382af87','ApplicationRole','Taller',1,'jonathanvgms@gmail.com','2019-10-12 17:54:28','',NULL,'0001-01-01 00:00:00',NULL),('6ab76151-a997-42b8-9c7a-95ac746ca4cf','Oficina Técnica','OFICINA TÉCNICA','634f46b0-e047-47fc-b6bb-af43f849bef6','ApplicationRole','Taller',1,'jonathanvgms@gmail.com','2019-10-12 17:53:11','',NULL,'0001-01-01 00:00:00',NULL),('8279ba65-0b53-42be-a4a5-be7ba3654482','Invitado','INVITADO','3416048d-10cb-45bc-99e9-4f3682232201','ApplicationRole','Administrativa',1,'jonathanvgms@gmail.com','2019-10-12 17:55:23','',NULL,'0001-01-01 00:00:00',NULL),('9999c5da-5817-4b97-9161-bf6d3f1bae56','Depósito','DEPÓSITO','0d100853-2bd6-4bc4-9d95-67a58c45e288','ApplicationRole','Taller',1,'jonathanvgms@gmail.com','2019-10-12 17:52:50','',NULL,'0001-01-01 00:00:00',NULL),('c59f4397-9228-48f8-b412-1d860ce43d05','Administrador','ADMINISTRADOR','ade6d9ea-fec7-469a-9b3c-15ec64e6b49f','ApplicationRole','Computacion',1,'jonathanvgms@gmail.com','2019-10-12 17:52:50',NULL,NULL,'0001-01-01 00:00:00',NULL),('f0820477-2846-42ce-b0c5-061038d6b69f','Directivo','DIRECTIVO','825324ed-d1c0-43a1-a233-922c6e85370a','ApplicationRole','Administrativa',1,'jonathanvgms@gmail.com','2019-10-12 17:54:51','',NULL,'0001-01-01 00:00:00',NULL);
 /*!40000 ALTER TABLE `aspnetroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,14 +112,14 @@ DROP TABLE IF EXISTS `aspnetuserclaims`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aspnetuserclaims` (
-  `Id` int(11) NOT NULL,
-  `UserId` varchar(255) NOT NULL,
-  `ClaimType` longtext,
-  `ClaimValue` longtext,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserId` varchar(767) NOT NULL,
+  `ClaimType` text,
+  `ClaimValue` text,
   PRIMARY KEY (`Id`),
   KEY `IX_AspNetUserClaims_UserId` (`UserId`),
   CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,6 +128,7 @@ CREATE TABLE `aspnetuserclaims` (
 
 LOCK TABLES `aspnetuserclaims` WRITE;
 /*!40000 ALTER TABLE `aspnetuserclaims` DISABLE KEYS */;
+INSERT INTO `aspnetuserclaims` VALUES (15,'f6036efc-0000-449a-a834-6d650d9c7b24','Borrar Roles','Borrar Roles'),(16,'f6036efc-0000-449a-a834-6d650d9c7b24','Editar Roles','Editar Roles'),(17,'f6036efc-0000-449a-a834-6d650d9c7b24','Crear Roles','Crear Roles'),(18,'f6036efc-0000-449a-a834-6d650d9c7b24','Borrar Usuarios','Borrar Usuarios'),(19,'f6036efc-0000-449a-a834-6d650d9c7b24','Editar Usuarios','Editar Usuarios'),(20,'f6036efc-0000-449a-a834-6d650d9c7b24','Crear Usuarios','Crear Usuarios'),(21,'f6036efc-0000-449a-a834-6d650d9c7b24','Crear Personal','Crear Personal'),(22,'f6036efc-0000-449a-a834-6d650d9c7b24','Editar Personal','Editar Personal'),(23,'f6036efc-0000-449a-a834-6d650d9c7b24','Borrar Personal','Borrar Personal');
 /*!40000 ALTER TABLE `aspnetuserclaims` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,10 +140,10 @@ DROP TABLE IF EXISTS `aspnetuserlogins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aspnetuserlogins` (
-  `LoginProvider` varchar(128) NOT NULL,
-  `ProviderKey` varchar(128) NOT NULL,
-  `ProviderDisplayName` longtext,
-  `UserId` varchar(255) NOT NULL,
+  `LoginProvider` varchar(767) NOT NULL,
+  `ProviderKey` varchar(767) NOT NULL,
+  `ProviderDisplayName` text,
+  `UserId` varchar(767) NOT NULL,
   PRIMARY KEY (`LoginProvider`,`ProviderKey`),
   KEY `IX_AspNetUserLogins_UserId` (`UserId`),
   CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
@@ -157,8 +167,8 @@ DROP TABLE IF EXISTS `aspnetuserroles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aspnetuserroles` (
-  `UserId` varchar(255) NOT NULL,
-  `RoleId` varchar(255) NOT NULL,
+  `UserId` varchar(767) NOT NULL,
+  `RoleId` varchar(767) NOT NULL,
   PRIMARY KEY (`UserId`,`RoleId`),
   KEY `IX_AspNetUserRoles_RoleId` (`RoleId`),
   CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE,
@@ -172,7 +182,7 @@ CREATE TABLE `aspnetuserroles` (
 
 LOCK TABLES `aspnetuserroles` WRITE;
 /*!40000 ALTER TABLE `aspnetuserroles` DISABLE KEYS */;
-INSERT INTO `aspnetuserroles` VALUES ('bd6e26ea-99e5-4bd4-b601-07eda88b0a2a','1');
+INSERT INTO `aspnetuserroles` VALUES ('45bae4ed-98d6-43ca-b903-2a0f334d88a7','6ab76151-a997-42b8-9c7a-95ac746ca4cf'),('f6036efc-0000-449a-a834-6d650d9c7b24','c59f4397-9228-48f8-b412-1d860ce43d05');
 /*!40000 ALTER TABLE `aspnetuserroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,21 +194,30 @@ DROP TABLE IF EXISTS `aspnetusers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aspnetusers` (
-  `Id` varchar(255) NOT NULL,
+  `Id` varchar(767) NOT NULL,
   `UserName` varchar(256) DEFAULT NULL,
   `NormalizedUserName` varchar(256) DEFAULT NULL,
   `Email` varchar(256) DEFAULT NULL,
   `NormalizedEmail` varchar(256) DEFAULT NULL,
-  `EmailConfirmed` bit(1) NOT NULL,
-  `PasswordHash` longtext,
-  `SecurityStamp` longtext,
-  `ConcurrencyStamp` longtext,
-  `PhoneNumber` longtext,
-  `PhoneNumberConfirmed` bit(1) NOT NULL,
-  `TwoFactorEnabled` bit(1) NOT NULL,
-  `LockoutEnd` datetime(6) DEFAULT NULL,
-  `LockoutEnabled` bit(1) NOT NULL,
+  `EmailConfirmed` int(11) NOT NULL,
+  `PasswordHash` text,
+  `SecurityStamp` text,
+  `ConcurrencyStamp` text,
+  `PhoneNumber` text,
+  `PhoneNumberConfirmed` int(11) NOT NULL,
+  `TwoFactorEnabled` int(11) NOT NULL,
+  `LockoutEnd` timestamp NULL DEFAULT NULL,
+  `LockoutEnabled` int(11) NOT NULL,
   `AccessFailedCount` int(11) NOT NULL,
+  `Discriminator` text NOT NULL,
+  `NombreCompleto` text,
+  `Habilitado` int(11) DEFAULT NULL,
+  `CreatedBy` text,
+  `CreationDate` datetime DEFAULT NULL,
+  `CreationIp` text,
+  `LastUpdatedBy` text,
+  `LastUpdatedDate` datetime DEFAULT NULL,
+  `LastUpdatedIp` text,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
   KEY `EmailIndex` (`NormalizedEmail`)
@@ -211,7 +230,7 @@ CREATE TABLE `aspnetusers` (
 
 LOCK TABLES `aspnetusers` WRITE;
 /*!40000 ALTER TABLE `aspnetusers` DISABLE KEYS */;
-INSERT INTO `aspnetusers` VALUES ('bd6e26ea-99e5-4bd4-b601-07eda88b0a2a','ivanvgms@gmail.com','IVANVGMS@GMAIL.COM','ivanvgms@gmail.com','IVANVGMS@GMAIL.COM','\0','AQAAAAEAACcQAAAAECKuU4rF9A3BetSN4SJQfj+U+j7w8FJxYRt9d9Dmhpm2vFJxfAokwrbPFYKuJDqoDg==','UOCILAKWYB4ORWMTD35GF476N3D4ERFE','9ebb1466-08ca-4ce8-8f05-da5cdafd5dfb',NULL,'\0','\0',NULL,'',0),('d508e4af-5f23-4b80-b20d-f876e4f646ab','jonathanvgms@gmail.com','JONATHANVGMS@GMAIL.COM','jonathanvgms@gmail.com','JONATHANVGMS@GMAIL.COM','\0','AQAAAAEAACcQAAAAEP3ZeHP5EimEwDmyIgp0oWJjeGlaj7dPuUJE18yaEJk+CM+AArFzen2h8xKvplNztw==','4B6FP2ATO5SBMNJAMEEIXQMT2E3DGNUF','5e37ae1c-36ea-4d46-b8d4-7063b34af617',NULL,'\0','\0','2019-03-04 23:29:07.751195','',0);
+INSERT INTO `aspnetusers` VALUES ('45bae4ed-98d6-43ca-b903-2a0f334d88a7','cynthia.espinola@gmail.com','CYNTHIA.ESPINOLA@GMAIL.COM','cynthia.espinola@gmail.com','CYNTHIA.ESPINOLA@GMAIL.COM',0,'AQAAAAEAACcQAAAAEJXxaR/JWJCZ+Ru6KFm4x6GluMIDr0ErGH36Kc+iyIRd/qzM94U0dNZLu81O/VemKg==','IJBBS24T7S2YP5TWSIHQ2LO5WDMJATP6','ad5d8c9f-e144-4034-9447-ca23fb785aa0',NULL,0,0,NULL,1,3,'ApplicationUser','Cynthia Espinola',1,'jonathanvgms@gmail.com','2019-10-12 22:31:28','','jonathanvgms@gmail.com','0001-01-01 00:00:00',NULL),('f6036efc-0000-449a-a834-6d650d9c7b24','jonathanvgms@gmail.com','JONATHANVGMS@GMAIL.COM','jonathanvgms@gmail.com','JONATHANVGMS@GMAIL.COM',0,'AQAAAAEAACcQAAAAEGZ+PEpm3NLJUD6CVCRIDjoVgf4jL7Y+iGVph7jmtCWdO/Eemci94LfC9xfwKZUkMA==','5DKT66RJRHXLB73ILBY5FDSKJFU33ME7','9b52ff2e-0876-4375-814e-bafd84c1d236',NULL,0,0,NULL,1,0,'ApplicationUser','Jonathan Velazquez',1,'jonathanvgms@gmail.com','2019-10-12 17:48:24','','jonathanvgms@gmail.com','0001-01-01 00:00:00',NULL);
 /*!40000 ALTER TABLE `aspnetusers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,10 +242,10 @@ DROP TABLE IF EXISTS `aspnetusertokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aspnetusertokens` (
-  `UserId` varchar(255) NOT NULL,
-  `LoginProvider` varchar(128) NOT NULL,
-  `Name` varchar(128) NOT NULL,
-  `Value` longtext,
+  `UserId` varchar(767) NOT NULL,
+  `LoginProvider` varchar(767) NOT NULL,
+  `Name` varchar(767) NOT NULL,
+  `Value` text,
   PRIMARY KEY (`UserId`,`LoginProvider`,`Name`),
   CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -240,14 +259,6 @@ LOCK TABLES `aspnetusertokens` WRITE;
 /*!40000 ALTER TABLE `aspnetusertokens` DISABLE KEYS */;
 /*!40000 ALTER TABLE `aspnetusertokens` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'sgm_usuarios'
---
-
---
--- Dumping routines for database 'sgm_usuarios'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -258,4 +269,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-20  0:31:33
+-- Dump completed on 2019-10-13 21:21:22

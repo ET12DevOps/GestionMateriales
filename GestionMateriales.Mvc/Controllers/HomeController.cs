@@ -17,10 +17,7 @@ namespace GestionMateriales.Mvc.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
-            this.logger = logger;
-
-            logger.LogTrace("This will not be seen because minimum level is debug");
-            logger.LogInformation("HomeController loaded");
+            this.logger = logger;         
         }
 
         [Authorize]
