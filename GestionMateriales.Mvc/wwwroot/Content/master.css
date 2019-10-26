@@ -76,7 +76,7 @@ body a {
     border-radius: 5px;
 }
 
-.fondo {
+.main-content-background {
     background-color: #F5F5F5;
 }
 
@@ -134,4 +134,8 @@ body a {
 
 .btn-custom {
     margin-right: 10px;
+}
+
+.card-border {
+    border: 1px solid rgba(0,0,0,.0625) !important;
 }
