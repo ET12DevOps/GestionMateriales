@@ -9,7 +9,6 @@ using System;
 namespace GestionMateriales.Mvc.Controllers.Aplicacion
 {
     [Authorize(Roles = "Desarrollo, Administrador, Oficina Técnica")]
-    //[Route("/Personal")]
     public class PersonalController : Controller
     {
         private readonly IPersonalService personalService;

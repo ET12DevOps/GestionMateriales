@@ -84,7 +84,6 @@ namespace GestionMateriales.Services.Implementation
             personal.LastUpdatedIp = ip;
 
             personalRepository.Remove(personal);
-
         }
     }
 }
