@@ -1,10 +1,12 @@
 # Gestión de Materiales
 
 ## Técnologias
-- Net Core 2.2.105
+- Net Core 3.1 LTS
+- Entity Framework Core 3.1
+- Visual Studio 2019 16.4
 - MySQL 5.7.24
 - MySQL Workbench 6.3 CE
-- Visual Studio 2017
+
 
 ## Configuración
 
@@ -30,7 +32,7 @@
     "sgm_oficinatecnica": "server=SERVER_IP_O_NOMBRE_DOMINIO;database=NOMBRE_BASE_DE_DATOS;user=USUARIO;password=CONTRASEÑA"
   },
   "Serilog": {
-    "Using": [ "Serilog.Sinks.MySQL", "Serilog.Sinks.File", "Serilog.Sinks.Udp" ],
+    "Using": [ "Serilog.Sinks.MySQL", "Serilog.Sinks.File" ],
     "MinimumLevel": "Debug",
     "WriteTo": [
       {
@@ -47,14 +49,7 @@
           "path": "Logs/log.txt",
           "rollingInterval": "Day"
         }
-      },
-      {
-        "Name": "Udp",
-        "Args": {
-          "remoteAddress": "127.0.0.1",
-          "remotePort": 7071
-        }
-      }
+      }      
     ]
   },
 ```
