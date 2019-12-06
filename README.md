@@ -1,7 +1,7 @@
 # Gestión de Materiales
 
 ## Técnologias
-- Net Core 3.1 LTS
+- Net Core 3.1.100 LTS
 - Entity Framework Core 3.1
 - Visual Studio 2019 16.4
 - MySQL 5.7.24
