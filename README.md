@@ -20,7 +20,7 @@
 - Verificar que en la sección **SCHEMAS** aparezcan las bases de datos **sgm_usuarios** y **sgm_oficinatecnica**
 
 ### Software
-- Abrir el proyecto en **Visual Studio 2017**
+- Abrir el proyecto en **Visual Studio 2017/2019**
 - Modificar los **ConnectionStrings** con los datos correspondientes del archivo de configuración **appsettings.json** ubicado en el proyecto **GestionMateriales.Mvc**
 - Ejecutar el proyecto **GestionMateriales.Mvc** (CTRL + F5)
 
