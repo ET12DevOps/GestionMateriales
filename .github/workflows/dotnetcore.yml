@@ -29,6 +29,6 @@ jobs:
         METHOD: sftp
         PORT: 22
         LOCAL_DIR: Build
-        REMOTE_DIR: Build
+        REMOTE_DIR: gestionmateriales
         ARGS: --verbose
         # --delete arg will delete files on the server if you've deleted them in git     
