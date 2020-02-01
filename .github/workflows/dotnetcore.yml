@@ -20,4 +20,11 @@ jobs:
     - name: Publish
       id: publish
       run: dotnet publish --configuration release
-      
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: secrets.FTP_URL
+        FTP_USERNAME: secrets.FTP_USER  
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        ARGS: --delete
+        # --delete arg will delete files on the server if you've deleted them in git     
