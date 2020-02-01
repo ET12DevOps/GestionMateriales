@@ -7,11 +7,17 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
+    steps:      
     - uses: actions/checkout@v2
     - name: Setup .NET Core
+      id: setup
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
     - name: Build with dotnet
+      id: build
       run: dotnet build --configuration Release
+    - name: Publish
+      id: publish
+      run: dotnet publish --configuration release
+      
