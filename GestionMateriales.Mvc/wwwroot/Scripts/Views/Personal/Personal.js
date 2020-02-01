@@ -4,8 +4,8 @@ let tablaPersonal;
 
 $(document).ready(function () {
 
-    if (window.location.href.split(':').length === 2)
-        baseURL = baseURL + appName + "/";
+    //if (window.location.href.split(':').length === 2)
+    //    baseURL = baseURL + appName + "/";
     
     $('#divgrdPersonal').append('<table id="grdPersonal" class="table table-bordered table-hover"> <thead> <tr> <th> idPersonal </th> <th> Nombre y Apellido </th> <th> Dni </th> <th> Ficha Censal </th> <th> Opciones </th> </tr> </thead> </table>');
 
