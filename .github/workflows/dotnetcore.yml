@@ -24,7 +24,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
         FTP_SERVER: 66.228.61.32
-        FTP_USERNAME: secrets.FTP_USER  
+        FTP_USERNAME: jvelazquez
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         METHOD: sftp
         PORT: 22
