@@ -19,7 +19,7 @@ jobs:
       run: dotnet build
     - name: Publish
       id: publish
-      run: dotnet publish --configuration Release --self-contained false -o ./Build
+      run: dotnet publish --configuration Release -o ./Build
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
