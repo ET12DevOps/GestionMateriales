@@ -43,5 +43,6 @@ jobs:
           git clone https://github.com/et12practicas/gestionmateriales |
           cd gestionmateriales |
           dotnet build |
-          dotnet publish -c Release -o "/var/www/gestionmateriales"
+          dotnet publish -c Release -o "/var/www/gestionmateriales" |
+          rm -Rf gestionamateriales
 
