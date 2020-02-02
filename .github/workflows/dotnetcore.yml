@@ -17,9 +17,9 @@ jobs:
     - name: Build with dotnet
       id: build
       run: dotnet build
-    - name: Publish
-      id: publish
-      run: dotnet publish --configuration Release -o ./Build
+   # - name: Publish
+   #   id: publish
+   #   run: dotnet publish --configuration Release -o ./Build
    # - name: FTP Deploy
    #   uses: SamKirkland/FTP-Deploy-Action@2.0.0
    #   env:
@@ -39,8 +39,9 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
-        script: 
-          rm -r gestionmateriales
+        script:           
+          if [ -d "gestionmateriales" ]; then rm -Rf gestionmateriales; fi
+          
           echo "Delete gestionmateriales directory" 
 
           git clone https://github.com/et12practicas/gestionmateriales
