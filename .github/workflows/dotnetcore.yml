@@ -39,9 +39,9 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
-        script:    
-          git clone https://github.com/et12practicas/gestionmateriales
-          cd GestionMateriales
-          dotnet build
+        script: |
+          git clone https://github.com/et12practicas/gestionmateriales |
+          cd GestionMateriales |
+          dotnet build |
           dotnet publish -c Release -o "/var/www/gestionmateriales"
 
