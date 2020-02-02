@@ -44,5 +44,5 @@ jobs:
           cd gestionmateriales |
           dotnet build |
           dotnet publish -c Release -o "/var/www/gestionmateriales" |
-          rm -Rf gestionamateriales
+          rm -r gestionamateriales
 
