@@ -32,7 +32,7 @@ jobs:
    #     REMOTE_DIR: gestionmateriales
    #     ARGS: --verbose
         # --delete arg will delete files on the server if you've deleted them in git     
-    - name: SSH Deploy
+    - name: SSH Publish & Deploy
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SERVER_URL }}
@@ -41,7 +41,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           git clone https://github.com/et12practicas/gestionmateriales |
-          cd GestionMateriales |
+          cd gestionmateriales |
           dotnet build |
           dotnet publish -c Release -o "/var/www/gestionmateriales"
 
