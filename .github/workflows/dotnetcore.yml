@@ -20,23 +20,34 @@ jobs:
     - name: Publish
       id: publish
       run: dotnet publish --configuration Release -o ./Build
-    - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      env:
-        FTP_SERVER: ${{ secrets.FTP_URL }}
-        FTP_USERNAME: ${{ secrets.FTP_USER }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        METHOD: sftp
-        PORT: 22
-        LOCAL_DIR: Build
-        REMOTE_DIR: gestionmateriales
-        ARGS: --verbose
+   # - name: FTP Deploy
+   #   uses: SamKirkland/FTP-Deploy-Action@2.0.0
+   #   env:
+   #     FTP_SERVER: ${{ secrets.FTP_URL }}
+   #     FTP_USERNAME: ${{ secrets.FTP_USER }}
+   #     FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+   #     METHOD: sftp
+   #     PORT: 22
+   #     LOCAL_DIR: Build
+   #     REMOTE_DIR: gestionmateriales
+   #     ARGS: --verbose
         # --delete arg will delete files on the server if you've deleted them in git     
-    - name: SSH Reload service
+    - name: SSH Deploy
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.FTP_URL }}
+        host: ${{ secrets.SERVER_URL }}
         username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.ROOT_PASSWORD }}
+        password: ${{ secrets.SSH_PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
-        script: service kestrel-gestionmateriales restart
+        script: 
+          rm -r gestionmateriales
+          echo "Delete gestionmateriales directory" 
+
+          git clone https://github.com/et12practicas/gestionmateriales
+          echo "Clone repository" 
+
+          cd GestionMateriales
+
+          dotnet build
+          dotnet publish -c Release -o "/var/www/gestionmateriales"
+          echo "Build and Publish" 
