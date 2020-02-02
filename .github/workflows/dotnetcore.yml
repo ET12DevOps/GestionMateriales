@@ -39,16 +39,9 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
-        script:           
-          if [ -d "gestionmateriales" ]; then rm -Rf gestionmateriales; fi
-          
-          echo "Delete gestionmateriales directory" 
-
+        script:    
           git clone https://github.com/et12practicas/gestionmateriales
-          echo "Clone repository" 
-
           cd GestionMateriales
-
           dotnet build
           dotnet publish -c Release -o "/var/www/gestionmateriales"
-          echo "Build and Publish" 
+
