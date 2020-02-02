@@ -186,7 +186,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
             };
 
             // Retrieve all the Users
-            foreach (var user in userManager.Users)
+            foreach (var user in userManager.Users.ToList())
             {
                 // If the user is in this role, add the username to
                 // Users property of EditRoleViewModel. This model
@@ -316,7 +316,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
 
             var model = new List<UsuarioRolViewModel>();
 
-            foreach (var role in roleManager.Roles)
+            foreach (var role in roleManager.Roles.ToList())
             {
                 var userRolesViewModel = new UsuarioRolViewModel
                 {
