@@ -31,7 +31,7 @@ jobs:
    #     LOCAL_DIR: Build
    #     REMOTE_DIR: gestionmateriales
    #     ARGS: --verbose
-        # --delete arg will delete files on the server if you've deleted them in git     
+   # --delete arg will delete files on the server if you've deleted them in git     
     - name: SSH Publish & Deploy
       uses: appleboy/ssh-action@master
       with:
