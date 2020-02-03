@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:      
     - uses: actions/checkout@v2
@@ -14,12 +14,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
-   # - name: Build with dotnet
-   #   id: build
-   #   run: dotnet build
-   # - name: Publish
-   #   id: publish
-   #   run: dotnet publish --configuration Release -o ./Build
+    - name: Build with dotnet
+      id: build
+      run: dotnet build
+    - name: Publish
+      id: publish
+      run: dotnet publish --configuration Release -o ./Build
    # - name: FTP Deploy
    #   uses: SamKirkland/FTP-Deploy-Action@2.0.0
    #   env:
@@ -32,17 +32,17 @@ jobs:
    #     REMOTE_DIR: gestionmateriales
    #     ARGS: --verbose
    # --delete arg will delete files on the server if you've deleted them in git     
-    - name: SSH Publish & Deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SERVER_URL }}
-        username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.SSH_PASSWORD }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |           
-          cd /home/jvelazquez/gestionmateriales
-          git pull
-          dotnet build
-          dotnet publish -c Release -o "/var/www/gestionmateriales"
-          systemctl restart kestrel-gestionmateriales
+   # - name: SSH Publish & Deploy
+   #   uses: appleboy/ssh-action@master
+   #   with:
+   #     host: ${{ secrets.SERVER_URL }}
+   #     username: ${{ secrets.SSH_USER }}
+   #     password: ${{ secrets.SSH_PASSWORD }}
+#        port: ${{ secrets.SSH_PORT }}
+ #       script: |           
+  #        cd /home/jvelazquez/gestionmateriales
+  #        git pull
+   #       dotnet build
+   #       dotnet publish -c Release -o "/var/www/gestionmateriales"
+   #       systemctl restart kestrel-gestionmateriales
 
