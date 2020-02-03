@@ -55,9 +55,3 @@
     ]
   },
 ```
-
-## Publicar
-
-### Build Local
-
-### Deploy Remoto
