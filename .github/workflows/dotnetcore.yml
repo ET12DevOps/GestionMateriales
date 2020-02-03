@@ -18,7 +18,7 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release -o "/var/www/gestionmateriales"
     - name: Deploy
-      run: systemctl restart kestrel-gestionmateriales
+      run: sudo systemctl restart kestrel-gestionmateriales
       
    # SSH
    # - name: SSH Deploy
