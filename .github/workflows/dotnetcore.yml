@@ -10,16 +10,15 @@ jobs:
     steps:      
     - uses: actions/checkout@v2
     - name: Setup .NET Core
-      id: setup
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
-    - name: Build with dotnet
-      id: build
+    - name: Build
       run: dotnet build
     - name: Publish
-      id: publish
-      run: dotnet publish --configuration Release -o ./Build
+      run: dotnet publish --configuration Release -o "/var/www/gestionmateriales"
+    - name: Deploy
+      run: systemctl restart kestrel-gestionmateriales
    # - name: FTP Deploy
    #   uses: SamKirkland/FTP-Deploy-Action@2.0.0
    #   env:
