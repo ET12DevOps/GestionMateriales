@@ -31,7 +31,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
-        [Authorize(Roles = "Desarrollo, Administrador")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult CrearUsuario()
         {
             return View();
@@ -39,6 +39,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
 
         //Registrar un nuevo usuario
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> CrearUsuario(CrearUsuarioViewModel model)
         {
             if (ModelState.IsValid)
@@ -111,6 +112,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Usuarios()
         {
             var users = userManager.Users;
@@ -125,6 +127,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public IActionResult CrearRol()
         {
             return View();
@@ -167,6 +170,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> EditarRol(string id)
         {
             // Find the role by Role ID
@@ -238,6 +242,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> EditarUsuario(string id)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -302,6 +307,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AdministrarUsuarioRol(string userId)
         {
             ViewBag.userId = userId;
@@ -372,6 +378,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> EditarUsuarioEnRol(string roleId)
         {
             ViewBag.roleId = roleId;
@@ -386,7 +393,9 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
 
             var model = new List<EditarUsuarioEnRol>();
 
-            foreach (var user in userManager.Users)
+            var users = userManager.Users.ToList();
+
+            foreach (var user in users)
             {
                 var userRoleViewModel = new EditarUsuarioEnRol
                 {
@@ -508,6 +517,7 @@ namespace GestionMateriales.Mvc.Controllers.Administracion
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AdministrarPermisosUsuario(string userId)
         {
             var user = await userManager.FindByIdAsync(userId);
